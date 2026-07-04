@@ -1,0 +1,98 @@
+<div class="profile-container">
+  <div class="header-actions">
+    <a routerLink="/sellers" class="btn-back">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Directory
+    </a>
+    <div class="action-group">
+      <button class="btn-secondary">Schedule Tour</button>
+      <button class="btn-primary">Edit Listing</button>
+    </div>
+  </div>
+
+  <div class="profile-layout">
+    <div class="profile-sidebar glass-panel">
+      <div class="avatar-section">
+        <div class="avatar-wrapper">
+          <img [src]="seller.avatar" [alt]="seller.firstName + ' ' + seller.lastName">
+          <span class="status-indicator" [class]="seller.status.toLowerCase().replace(' ', '-')"></span>
+        </div>
+        <h2>{{ seller.firstName }} {{ seller.lastName }}</h2>
+        <span class="status-badge" [class]="seller.status.toLowerCase().replace(' ', '-')">{{ seller.status }} Listing</span>
+        <p class="join-date">Seller since {{ seller.listedDate }}</p>
+      </div>
+
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+
+        <a [href]="'mailto:' + seller.email" class="info-item">
+          <div class="icon-box"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+          <div class="info-text">
+            <span>Email</span>
+            <p>{{ seller.email }}</p>
+          </div>
+        </a>
+
+        <a [href]="'tel:' + seller.phone" class="info-item">
+          <div class="icon-box"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+          <div class="info-text">
+            <span>Phone</span>
+            <p>{{ seller.phone }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="profile-main">
+      <div class="preferences-card glass-panel">
+        <div class="section-header">
+          <h3>Property Overview</h3>
+          <span class="last-contact">Updated {{ seller.lastUpdated }}</span>
+        </div>
+
+        <div class="pref-grid">
+          <div class="pref-item">
+            <span class="label">Asking Price</span>
+            <span class="value budget">{{ seller.askingPrice | currency:'USD':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="pref-item">
+            <span class="label">Property</span>
+            <span class="value tag">{{ seller.propertyTitle }}</span>
+          </div>
+          <div class="pref-item">
+            <span class="label">Location</span>
+            <span class="value">{{ seller.location }}</span>
+          </div>
+          <div class="pref-item">
+            <span class="label">Layout</span>
+            <span class="value">{{ seller.bedrooms }} bed · {{ seller.bathrooms }} bath</span>
+          </div>
+        </div>
+
+        <div class="notes-section">
+          <h4>Seller Notes</h4>
+          <p>{{ seller.notes }}</p>
+        </div>
+      </div>
+
+      <div class="recommendations-section">
+        <h3>Listing Highlights</h3>
+        <div class="recommended-grid">
+          <div class="mini-property-card" *ngFor="let item of listingHighlights">
+            <div class="mini-card-content">
+              <h4>{{ item.label }}</h4>
+              <p class="price">{{ item.value }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card glass-panel">
+        <h3>Recent Activity</h3>
+        <ul>
+          <li *ngFor="let activity of recentActivity">{{ activity }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

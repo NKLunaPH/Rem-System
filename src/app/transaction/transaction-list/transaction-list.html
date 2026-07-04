@@ -1,0 +1,45 @@
+<div class="transaction-page">
+  <div class="header-row">
+    <div>
+      <h1>Transactions</h1>
+      <p>Monitor closed deals, pending contracts, and escrow status in one place.</p>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search transaction ID, agent, seller, buyer, property, or status" />
+  </div>
+
+  <div class="transaction-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Transaction</th>
+          <th>Date</th>
+          <th>Agent</th>
+          <th>Seller</th>
+          <th>Buyer</th>
+          <th>Property</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of filteredTransactions">
+          <td>{{ tx.id }}</td>
+          <td>{{ tx.date }}</td>
+          <td>{{ tx.agent }}</td>
+          <td>{{ tx.seller }}</td>
+          <td>{{ tx.buyer }}</td>
+          <td>{{ tx.property }}</td>
+          <td>{{ tx.amount }}</td>
+          <td><span class="status-pill" [class]="tx.status.toLowerCase().replace(' ', '-')">{{ tx.status }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="filteredTransactions.length === 0" class="no-results">
+      No transactions found matching "{{ searchTerm }}".
+    </div>
+  </div>
+</div>

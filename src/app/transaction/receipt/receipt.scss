@@ -1,0 +1,129 @@
+.receipt-page {
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.receipt-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.receipt-header p {
+  margin: 0;
+  color: #475569;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: #f3f4f6;
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.receipt-card {
+  background: white;
+  border-radius: 28px;
+  padding: 28px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.receipt-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.receipt-top .label {
+  margin: 0 0 6px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.receipt-top h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.receipt-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.receipt-details .label {
+  margin: 0 0 6px;
+  color: #64748b;
+}
+
+.receipt-details p {
+  margin: 0;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.receipt-items {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+}
+
+.items-header,
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.items-header {
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.item-row span {
+  color: #0f172a;
+}
+
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.receipt-total span {
+  color: #475569;
+}
+
+.receipt-total strong {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 720px) {
+  .receipt-top,
+  .receipt-details {
+    display: block;
+  }
+}

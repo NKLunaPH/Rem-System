@@ -1,0 +1,36 @@
+<div class="calendar-page">
+  <div class="calendar-header">
+    <div>
+      <h1>Appointment Calendar</h1>
+      <p>Review your appointment schedule and upcoming bookings for the month.</p>
+    </div>
+    <a routerLink="/appointments" class="btn-secondary">Back to List</a>
+  </div>
+
+  <div class="calendar-grid-card">
+    <div class="calendar-summary">
+      <div class="month-label">{{ month }}</div>
+      <div class="weekday-row">
+        <span *ngFor="let day of weekdays">{{ day }}</span>
+      </div>
+      <div class="day-grid">
+        <div *ngFor="let day of calendarDays" class="day-cell" [class.empty]="!day.active" [class.has-event]="day.appointments > 0">
+          <span>{{ day.day }}</span>
+          <span *ngIf="day.appointments > 0" class="event-count">{{ day.appointments }}</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="event-list">
+      <h2>Upcoming Appointments</h2>
+      <div *ngFor="let event of events" class="event-card">
+        <div class="event-meta">
+          <strong>{{ event.date }} · {{ event.time }}</strong>
+          <span class="status-pill" [class]="event.status.toLowerCase()">{{ event.status }}</span>
+        </div>
+        <div>{{ event.client }} with {{ event.agent }}</div>
+        <div class="event-property">Property: {{ event.property }}</div>
+      </div>
+    </section>
+  </div>
+</div>

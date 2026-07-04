@@ -1,0 +1,26 @@
+<div class="property-dashboard">
+  <div class="header">
+    <div class="title-container">
+      <h1>Property Listings</h1>
+      <p>Manage and view all your real estate properties in one place.</p>
+    </div>
+    <button class="add-btn">
+      <span class="icon">+</span> Add Property
+    </button>
+  </div>
+
+  <app-property-filter (filterChanged)="onFilterChanged($event)"></app-property-filter>
+
+  <div class="property-grid">
+    <app-property-card 
+      *ngFor="let property of filteredProperties"
+      [property]="property">
+    </app-property-card>
+  </div>
+  
+  <div *ngIf="filteredProperties.length === 0" class="no-results">
+    <svg viewBox="0 0 24 24" width="48" height="48" stroke="#94a3b8" stroke-width="1.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <h3>No properties found</h3>
+    <p>Try adjusting your search or filters to find what you're looking for.</p>
+  </div>
+</div>

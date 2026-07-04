@@ -1,0 +1,33 @@
+<div class="agent-dashboard">
+  <div class="header">
+    <div>
+      <h1>Agent Directory</h1>
+      <p>View your team, their territories, and active listings.</p>
+    </div>
+    <button class="add-btn">Add Agent</button>
+  </div>
+
+  <div class="search-box">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search agents by name, email, or region" />
+    <button class="search-btn" aria-label="Search">Search</button>
+  </div>
+
+  <div class="cards-grid">
+    <div class="agent-card" *ngFor="let agent of filteredAgents">
+      <div class="card-header">
+        <div>
+          <h2>{{ agent.name }}</h2>
+          <p>{{ agent.region }}</p>
+        </div>
+        <span class="status-badge" [class]="agent.status.toLowerCase().replace(' ', '-')">{{ agent.status }}</span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Active Listings:</strong> {{ agent.activeListings }}</p>
+        <p><strong>Email:</strong> {{ agent.email }}</p>
+        <p><strong>Phone:</strong> {{ agent.phone }}</p>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-secondary">Message</button>
+          <a [routerLink]="['/agents', agent.id]" class="btn-primary">View Profile</a>

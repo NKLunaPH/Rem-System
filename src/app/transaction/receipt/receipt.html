@@ -1,0 +1,61 @@
+<div class="receipt-page">
+  <div class="receipt-header">
+    <div>
+      <h1>Receipt</h1>
+      <p>Official payment receipt for your transaction.</p>
+    </div>
+    <a routerLink="/transactions" class="btn-secondary">Back to Transactions</a>
+  </div>
+
+  <section class="receipt-card">
+    <div class="receipt-top">
+      <div>
+        <p class="label">Receipt</p>
+        <h2>{{ receiptNumber }}</h2>
+      </div>
+      <div>
+        <p class="label">Date</p>
+        <p>{{ date }}</p>
+      </div>
+    </div>
+
+    <div class="receipt-details">
+      <div>
+        <p class="label">Transaction</p>
+        <p>{{ transactionId }}</p>
+      </div>
+      <div>
+        <p class="label">Payer</p>
+        <p>{{ payerName }}</p>
+      </div>
+      <div>
+        <p class="label">Payee</p>
+        <p>{{ payeeName }}</p>
+      </div>
+      <div>
+        <p class="label">Property</p>
+        <p>{{ property }}</p>
+      </div>
+      <div>
+        <p class="label">Method</p>
+        <p>{{ paymentMethod }}</p>
+      </div>
+    </div>
+
+    <div class="receipt-items">
+      <div class="items-header">
+        <span>Description</span>
+        <span>Amount</span>
+      </div>
+      <div *ngFor="let item of items" class="item-row">
+        <span>{{ item.description }}</span>
+        <span>{{ item.amount }}</span>
+      </div>
+    </div>
+
+    <div class="receipt-total">
+      <span>Total</span>
+      <strong>{{ total }}</strong>
+    </div>
+  </section>
+</div>

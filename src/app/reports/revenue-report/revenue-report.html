@@ -1,0 +1,41 @@
+<div class="revenue-report-page">
+  <div class="page-header">
+    <div>
+      <h1>Revenue Report</h1>
+      <p>Track revenue growth, commissions, and monthly performance.</p>
+    </div>
+    <a routerLink="/dashboard" class="btn-secondary">Back to Dashboard</a>
+  </div>
+
+  <section class="metrics-grid">
+    <div *ngFor="let metric of metrics" class="metric-card">
+      <p class="label">{{ metric.label }}</p>
+      <h2>{{ metric.value }}</h2>
+      <span class="trend">{{ metric.trend }}</span>
+    </div>
+  </section>
+
+  <section class="report-card">
+    <div class="card-header">
+      <h3>Monthly Revenue Trend</h3>
+      <button class="btn-primary">Export</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Revenue</th>
+          <th>Bookings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of revenueData">
+          <td>{{ item.month }}</td>
+          <td>{{ item.revenue }}</td>
+          <td>{{ item.bookings }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

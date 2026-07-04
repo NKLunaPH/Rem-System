@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #0f172a;
+  background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.12), transparent 35%),
+              linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .btn-back,
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 14px;
+    padding: 0.9rem 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-back {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: white;
+    border: none;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.22);
+    }
+  }
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+}
+
+.profile-card {
+  .avatar-section {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+
+    img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .status-badge {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+
+      &.active { background: #dcfce7; color: #166534; }
+      &.on-leave { background: #fef3c7; color: #92400e; }
+      &.inactive { background: #f1f5f9; color: #475569; }
+    }
+  }
+
+  .contact-info {
+    margin-top: 2rem;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #334155;
+    }
+
+    p {
+      margin: 0.85rem 0;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    strong {
+      color: #0f172a;
+    }
+  }
+}
+
+.details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  .details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+      color: #64748b;
+    }
+
+    .listing-count {
+      font-weight: 700;
+      color: #047857;
+      background: #ecfdf5;
+      padding: 0.75rem 1rem;
+      border-radius: 18px;
+      white-space: nowrap;
+    }
+  }
+
+  .key-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+
+    div {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      display: grid;
+      gap: 0.4rem;
+      color: #475569;
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      strong {
+        font-size: 1.3rem;
+        color: #0f172a;
+      }
+    }
+  }
+
+  .notes-section {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 1.75rem;
+
+    h4 {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      color: #334155;
+    }
+
+    p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.8;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  :host {
+    padding: 1.25rem;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .details-panel .details-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

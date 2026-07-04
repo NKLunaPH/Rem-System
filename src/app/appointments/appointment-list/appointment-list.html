@@ -1,0 +1,47 @@
+<div class="appointments-page">
+  <div class="header-row">
+    <div>
+      <h1>Appointments</h1>
+      <p>Track upcoming client meetings, showings, and status updates.</p>
+    </div>
+    <a routerLink="/appointments/new" class="btn-primary">New Appointment</a>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search appointments by client, agent, property, or status" />
+  </div>
+
+  <div class="appointment-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Agent</th>
+          <th>Property</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of filteredAppointments">
+          <td>{{ appointment.client }}</td>
+          <td>{{ appointment.agent }}</td>
+          <td>{{ appointment.property }}</td>
+          <td>{{ appointment.date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td><span class="status-badge" [class]="appointment.status.toLowerCase().replace(' ', '-')">{{ appointment.status }}</span></td>
+          <td><a [routerLink]="['/appointments', appointment.id]" class="view-link">Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="filteredAppointments.length === 0" class="no-results">
+      No appointments found matching "{{ searchTerm }}".
+    </div>
+  </div>
+  <div class="calendar-link-row">
+    <a routerLink="/appointments/calendar" class="btn-secondary">View Calendar</a>
+  </div>
+</div>

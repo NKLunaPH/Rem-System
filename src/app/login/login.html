@@ -1,0 +1,35 @@
+<div class="login-page">
+  <div class="login-card glass-panel">
+    <div class="login-header">
+      <div class="brand-mark">REMS</div>
+      <h1>Welcome back</h1>
+      <p>Securely sign in to manage listings, buyers, and sellers.</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="login-form">
+      <label>
+        <span>Email address</span>
+        <input type="email" [(ngModel)]="email" name="email" required placeholder="you@example.com" />
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input type="password" [(ngModel)]="password" name="password" required placeholder="Enter your password" />
+      </label>
+
+      <div class="form-actions">
+        <label class="remember-me">
+          <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" />
+          Remember me
+        </label>
+        <a class="forgot-link" href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-primary">Sign In</button>
+
+      <p class="signup-note">
+        New to REMS? <a routerLink="/buyers">Create an account</a>
+      </p>
+    </form>
+  </div>
+</div>

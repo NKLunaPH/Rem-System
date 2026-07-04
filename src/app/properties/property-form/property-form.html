@@ -1,0 +1,111 @@
+<div class="form-container">
+  <div class="form-header">
+    <h2>Add New Property</h2>
+    <p>Fill in the details below to list a new property.</p>
+  </div>
+
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="glass-form">
+    
+    <div class="form-section">
+      <h3>Basic Information</h3>
+      
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="title">Property Title</label>
+          <input type="text" id="title" formControlName="title" placeholder="e.g. Modern Glass Villa">
+          <span class="error" *ngIf="propertyForm.get('title')?.touched && propertyForm.get('title')?.invalid">
+            Please enter a valid title (min 5 characters).
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row split-3">
+        <div class="form-group">
+          <label for="price">Price (USD)</label>
+          <div class="input-with-icon">
+            <span class="icon">$</span>
+            <input type="number" id="price" formControlName="price" placeholder="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Property Type</label>
+          <div class="select-wrapper">
+            <select id="type" formControlName="type">
+              <option value="House">House</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Land">Land</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <div class="select-wrapper">
+            <select id="status" formControlName="status">
+              <option value="Available">Available</option>
+              <option value="Sold">Sold</option>
+              <option value="Rented">Rented</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Property Details</h3>
+      
+      <div class="form-row split-3">
+        <div class="form-group">
+          <label for="bedrooms">Bedrooms</label>
+          <input type="number" id="bedrooms" formControlName="bedrooms" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="bathrooms">Bathrooms</label>
+          <input type="number" id="bathrooms" formControlName="bathrooms" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="area">Area (sqft)</label>
+          <input type="number" id="area" formControlName="area" placeholder="0">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="location">Address / Location</label>
+          <input type="text" id="location" formControlName="location" placeholder="e.g. 123 Beverly Hills, CA">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Media & Description</h3>
+      
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="imageUrl">Image URL</label>
+          <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="https://example.com/image.jpg">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="description">Description (Optional)</label>
+          <textarea id="description" formControlName="description" rows="4" placeholder="Describe the property..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary">Cancel</button>
+      <button type="submit" class="btn-primary" [disabled]="isSubmitting">
+        <span *ngIf="!isSubmitting">Save Property</span>
+        <span *ngIf="isSubmitting" class="loader"></span>
+      </button>
+    </div>
+
+  </form>
+</div>

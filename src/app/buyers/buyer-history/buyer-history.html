@@ -1,0 +1,47 @@
+<div class="history-container">
+  <div class="header">
+    <div class="title-container">
+      <h2>Activity History</h2>
+      <p>Interaction timeline for {{ buyerName }}</p>
+    </div>
+    <div class="filters">
+      <select class="filter-select">
+        <option>All Activity</option>
+        <option>Viewings</option>
+        <option>Offers</option>
+        <option>Messages</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="timeline glass-panel">
+    
+    <div class="timeline-item" *ngFor="let event of historyEvents; let last = last" [class.last-item]="last">
+      <!-- Date Column -->
+      <div class="timeline-date">
+        <span class="date">{{ event.date }}</span>
+        <span class="time">{{ event.time }}</span>
+      </div>
+
+      <!-- Center Line & Icon -->
+      <div class="timeline-divider">
+        <div class="timeline-icon" [class]="event.iconColor">
+          <svg *ngIf="event.type === 'Offer'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <svg *ngIf="event.type === 'Viewing'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <svg *ngIf="event.type === 'Message'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <svg *ngIf="event.type === 'StatusChange'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="line" *ngIf="!last"></div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="timeline-content">
+        <div class="content-card">
+          <h4>{{ event.title }}</h4>
+          <p>{{ event.description }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

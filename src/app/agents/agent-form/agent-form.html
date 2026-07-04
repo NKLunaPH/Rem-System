@@ -1,0 +1,106 @@
+<div class="form-container">
+  <div class="form-header">
+    <h2>Register New Agent</h2>
+    <p>Quickly add a team member and their territory details.</p>
+  </div>
+
+  <form [formGroup]="agentForm" (ngSubmit)="onSubmit()" class="glass-form">
+    <div class="form-section">
+      <h3>Profile Information</h3>
+
+      <div class="form-row split-2">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" formControlName="firstName" placeholder="e.g. Ava">
+          <span class="error" *ngIf="agentForm.get('firstName')?.touched && agentForm.get('firstName')?.invalid">
+            Please enter a valid first name.
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" formControlName="lastName" placeholder="e.g. Thompson">
+          <span class="error" *ngIf="agentForm.get('lastName')?.touched && agentForm.get('lastName')?.invalid">
+            Please enter a valid last name.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row split-2">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" formControlName="email" placeholder="ava@example.com">
+          <span class="error" *ngIf="agentForm.get('email')?.touched && agentForm.get('email')?.invalid">
+            Please enter a valid email address.
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" formControlName="phone" placeholder="+1 (555) 101-2020">
+          <span class="error" *ngIf="agentForm.get('phone')?.touched && agentForm.get('phone')?.invalid">
+            Please enter a valid phone number.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Team Details</h3>
+
+      <div class="form-row split-3">
+        <div class="form-group">
+          <label for="region">Region</label>
+          <select id="region" formControlName="region">
+            <option>West Coast</option>
+            <option>Midwest</option>
+            <option>East Coast</option>
+            <option>South</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select id="role" formControlName="role">
+            <option>Listing Agent</option>
+            <option>Buyer Agent</option>
+            <option>Team Lead</option>
+            <option>Support Specialist</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" formControlName="status">
+            <option>Active</option>
+            <option>On Leave</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row split-2">
+        <div class="form-group">
+          <label for="activeListings">Active Listings</label>
+          <input type="number" id="activeListings" formControlName="activeListings" placeholder="0">
+          <span class="error" *ngIf="agentForm.get('activeListings')?.touched && agentForm.get('activeListings')?.invalid">
+            Please enter a valid number.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="notes">Notes</label>
+          <textarea id="notes" formControlName="notes" rows="4" placeholder="Enter notes about territory, specialty, or availability."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary">Cancel</button>
+      <button type="submit" class="btn-primary" [disabled]="isSubmitting">
+        <span *ngIf="!isSubmitting">Register Agent</span>
+        <span *ngIf="isSubmitting" class="loader"></span>
+      </button>
+    </div>
+  </form>
+</div>

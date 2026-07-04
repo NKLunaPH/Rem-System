@@ -1,0 +1,49 @@
+<div class="sales-report-page">
+  <div class="page-header">
+    <div>
+      <h1>Sales Report</h1>
+      <p>Performance overview for listings, closings, and pipeline activity.</p>
+    </div>
+    <a routerLink="/dashboard" class="btn-secondary">Back to Dashboard</a>
+  </div>
+
+  <section class="summary-grid">
+    <div *ngFor="let item of summary" class="summary-card">
+      <p class="label">{{ item.label }}</p>
+      <h2>{{ item.value }}</h2>
+      <span class="change">{{ item.change }}</span>
+    </div>
+  </section>
+
+  <section class="report-card">
+    <div class="card-header">
+      <h3>Recent Sales Activity</h3>
+      <button class="btn-primary">Export</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Deal ID</th>
+          <th>Client</th>
+          <th>Property</th>
+          <th>Agent</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td>{{ sale.id }}</td>
+          <td>{{ sale.client }}</td>
+          <td>{{ sale.property }}</td>
+          <td>{{ sale.agent }}</td>
+          <td>{{ sale.date }}</td>
+          <td>{{ sale.amount }}</td>
+          <td><span class="status-pill">{{ sale.status }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

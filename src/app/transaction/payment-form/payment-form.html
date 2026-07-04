@@ -1,0 +1,62 @@
+<div class="payment-page">
+  <div class="page-header">
+    <div>
+      <h1>Payment Form</h1>
+      <p>Record transaction payments and track settlement status.</p>
+    </div>
+    <a routerLink="/transactions" class="btn-secondary">Back to Transactions</a>
+  </div>
+
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+    <div class="field-group">
+      <label>
+        Transaction ID
+        <input type="text" formControlName="transactionId" placeholder="e.g. TRX-1024" />
+        <span class="error" *ngIf="paymentForm.get('transactionId')?.touched && paymentForm.get('transactionId')?.invalid">Transaction ID is required.</span>
+      </label>
+
+      <label>
+        Payer Name
+        <input type="text" formControlName="payerName" placeholder="Buyer or seller name" />
+        <span class="error" *ngIf="paymentForm.get('payerName')?.touched && paymentForm.get('payerName')?.invalid">Payer name is required.</span>
+      </label>
+
+      <label>
+        Payment Method
+        <select formControlName="paymentMethod">
+          <option value="" disabled>Select method</option>
+          <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+        </select>
+        <span class="error" *ngIf="paymentForm.get('paymentMethod')?.touched && paymentForm.get('paymentMethod')?.invalid">Payment method is required.</span>
+      </label>
+
+      <label>
+        Amount
+        <input type="text" formControlName="amount" placeholder="$0.00" />
+        <span class="error" *ngIf="paymentForm.get('amount')?.touched && paymentForm.get('amount')?.invalid">Valid amount is required.</span>
+      </label>
+
+      <label>
+        Payment Date
+        <input type="date" formControlName="paymentDate" />
+        <span class="error" *ngIf="paymentForm.get('paymentDate')?.touched && paymentForm.get('paymentDate')?.invalid">Payment date is required.</span>
+      </label>
+
+      <label>
+        Payment Status
+        <select formControlName="paymentStatus">
+          <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="full-width">
+      Notes
+      <textarea formControlName="notes" rows="4" placeholder="Optional payment notes"></textarea>
+    </label>
+
+    <button type="submit" class="btn-submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Submitting...' : 'Submit Payment' }}
+    </button>
+  </form>
+</div>

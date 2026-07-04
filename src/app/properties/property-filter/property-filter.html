@@ -1,0 +1,45 @@
+<div class="filter-container glass-panel">
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilter()" class="filter-form">
+    
+    <!-- Search / Keyword -->
+    <div class="filter-group keyword-group">
+      <div class="input-with-icon">
+        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" formControlName="keyword" placeholder="Search locations, titles...">
+      </div>
+    </div>
+
+    <!-- Property Type -->
+    <div class="filter-group">
+      <div class="select-wrapper">
+        <select formControlName="type">
+          <option value="All">All Types</option>
+          <option value="House">House</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Land">Land</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Price Range -->
+    <div class="filter-group price-group">
+      <div class="input-with-icon">
+        <span class="icon">$</span>
+        <input type="number" formControlName="minPrice" placeholder="Min Price">
+      </div>
+      <span class="separator">-</span>
+      <div class="input-with-icon">
+        <span class="icon">$</span>
+        <input type="number" formControlName="maxPrice" placeholder="Max Price">
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="filter-actions">
+      <button type="button" class="btn-clear" (click)="resetFilter()">Clear</button>
+      <button type="submit" class="btn-search">Search</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,52 @@
+<div class="profile-container">
+  <div class="header-actions">
+    <a routerLink="/agents" class="btn-back">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Agents
+    </a>
+    <button class="btn-primary">Message Agent</button>
+  </div>
+
+  <div class="profile-grid">
+    <aside class="profile-card glass-panel">
+      <div class="avatar-section">
+        <img [src]="agent.avatar" [alt]="agent.name" />
+        <h2>{{ agent.name }}</h2>
+        <span class="status-badge" [class]="agent.status.toLowerCase().replace(' ', '-')">{{ agent.status }}</span>
+      </div>
+
+      <div class="contact-info">
+        <h3>Contact</h3>
+        <p><strong>Email</strong><br>{{ agent.email }}</p>
+        <p><strong>Phone</strong><br>{{ agent.phone }}</p>
+        <p><strong>Region</strong><br>{{ agent.region }}</p>
+      </div>
+    </aside>
+
+    <section class="details-panel glass-panel">
+      <div class="details-header">
+        <div>
+          <h3>{{ agent.role }}</h3>
+          <p>Top-performing area: {{ agent.topPerformingArea }}</p>
+        </div>
+        <span class="listing-count">{{ agent.activeListings }} Active Listings</span>
+      </div>
+
+      <div class="key-metrics">
+        <div>
+          <span>Years on Team</span>
+          <strong>{{ agent.yearsOnTeam }}</strong>
+        </div>
+        <div>
+          <span>Role</span>
+          <strong>{{ agent.role }}</strong>
+        </div>
+      </div>
+
+      <div class="notes-section">
+        <h4>Agent Notes</h4>
+        <p>{{ agent.notes }}</p>
+      </div>
+    </section>
+  </div>
+</div>
