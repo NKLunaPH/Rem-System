@@ -1,0 +1,22 @@
+<div class="notifications-page">
+  <div class="page-header">
+    <div>
+      <h1>Notifications</h1>
+      <p>Stay up to date with appointments, payments, and agent activity.</p>
+    </div>
+    <a routerLink="/dashboard" class="btn-secondary">Back to Dashboard</a>
+  </div>
+
+  <section class="notifications-list">
+    <div *ngFor="let item of notifications" class="notification-card" [class.unread]="item.unread">
+      <div class="dot" *ngIf="item.unread"></div>
+      <div class="content">
+        <div class="title-row">
+          <h3>{{ item.title }}</h3>
+          <span>{{ item.time }}</span>
+        </div>
+        <p>{{ item.message }}</p>
+      </div>
+    </div>
+  </section>
+</div>

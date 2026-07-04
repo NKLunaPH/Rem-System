@@ -1,0 +1,52 @@
+<div class="register-page">
+  <div class="register-card">
+    <div class="brand">
+      <h1>Create Account</h1>
+      <p>Join REMS and start managing clients, listings, and transactions.</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <label>
+        Full Name
+        <input type="text" formControlName="fullName" placeholder="Your full name" />
+        <span class="error" *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid">Full name is required.</span>
+      </label>
+
+      <label>
+        Email
+        <input type="email" formControlName="email" placeholder="you@example.com" />
+        <span class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">Enter a valid email.</span>
+      </label>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="Minimum 6 characters" />
+        <span class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">Password must be at least 6 characters.</span>
+      </label>
+
+      <label>
+        Confirm Password
+        <input type="password" formControlName="confirmPassword" placeholder="Repeat password" />
+        <span class="error" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">Please confirm your password.</span>
+        <span class="error" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">Passwords do not match.</span>
+      </label>
+
+      <label>
+        Role
+        <select formControlName="role">
+          <option value="Broker">Broker</option>
+          <option value="Agent">Agent</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </label>
+
+      <button type="submit" class="btn-submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Creating account...' : 'Register' }}
+      </button>
+    </form>
+
+    <p class="footer-link">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>

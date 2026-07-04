@@ -38,11 +38,21 @@ import { Receipt } from './transaction/receipt/receipt';
 import { SalesReport } from './reports/sales-report/sales-report';
 import { RevenueReport } from './reports/revenue-report/revenue-report';
 
+// Notifications
+import { Notifications } from './notifications/notifications';
+
+// Settings
+import { Settings } from './settings/settings';
+
+// Register
+import { Register } from './register/register';
+
 // Auth
 import { Login } from './login/login';
 
 export const routes: Routes = [
   { path: 'login', component: Login },
+  { path: 'register', component: Register },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'dashboard', component: Dashboard },
   
@@ -69,6 +79,9 @@ export const routes: Routes = [
 
   { path: 'reports/sales', component: SalesReport },
   { path: 'reports/revenue', component: RevenueReport },
+
+  { path: 'notifications', component: Notifications },
+  { path: 'settings', component: Settings },
 
   { path: 'sellers', component: SellerList },
   { path: 'sellers/new', component: SellerForm },

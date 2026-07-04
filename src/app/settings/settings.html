@@ -1,0 +1,40 @@
+<div class="settings-page">
+  <div class="page-header">
+    <div>
+      <h1>Settings</h1>
+      <p>Manage your account, profile, and notification preferences.</p>
+    </div>
+    <a routerLink="/dashboard" class="btn-secondary">Back to Dashboard</a>
+  </div>
+
+  <section class="settings-card">
+    <h2>Profile</h2>
+    <div class="profile-info">
+      <div>
+        <p class="label">Name</p>
+        <strong>{{ profile.name }}</strong>
+      </div>
+      <div>
+        <p class="label">Email</p>
+        <strong>{{ profile.email }}</strong>
+      </div>
+      <div>
+        <p class="label">Role</p>
+        <strong>{{ profile.role }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="settings-card">
+    <h2>Preferences</h2>
+    <div class="preference-list">
+      <div *ngFor="let item of preferences" class="preference-item">
+        <span>{{ item.label }}</span>
+        <label class="switch">
+          <input type="checkbox" [checked]="item.enabled" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </section>
+</div>
